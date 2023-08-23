@@ -26,7 +26,6 @@ class _TravelRoadmapScreenState extends State<TravelRoadmapScreen> {
 
   @override
   Widget build(BuildContext context) {
-    setState(() {});
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
