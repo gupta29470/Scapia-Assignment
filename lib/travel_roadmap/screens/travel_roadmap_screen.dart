@@ -20,12 +20,13 @@ class TravelRoadmapScreen extends StatefulWidget {
 class _TravelRoadmapScreenState extends State<TravelRoadmapScreen> {
   @override
   void didChangeDependencies() {
-    context.travelRoadmapCubit.fetchTravelRoadmap();
     super.didChangeDependencies();
+    context.travelRoadmapCubit.fetchTravelRoadmap();
   }
 
   @override
   Widget build(BuildContext context) {
+    setState(() {});
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(

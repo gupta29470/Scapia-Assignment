@@ -113,4 +113,10 @@ class _RefundStatusWidgetState extends State<RefundStatusWidget>
       ),
     );
   }
+
+  @override
+  void dispose() {
+    progressController.dispose();
+    super.dispose();
+  }
 }
