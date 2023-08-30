@@ -24,4 +24,25 @@ extension on _RefundCheckpointWidgetState {
     return index < RefundData.chargesTexts.length &&
         RefundData.cancellationTexts[index].isNotEmpty;
   }
+
+  void setSizes(int index) {
+    GlobalKey cancellationTextKey = RefundKeys.getCancellationTextKey(index);
+    GlobalKey chargesTextKey = RefundKeys.getChargesTextKey(index);
+
+    RenderBox? cancellationTextBox =
+        cancellationTextKey.currentContext?.findRenderObject() as RenderBox?;
+
+    if (cancellationTextBox != null) {
+      double height =
+          max(80, RefundKeys.cancellationTextHeight(index, "check"));
+      cancellationTextHeightNotifier.value = height;
+    }
+
+    RenderBox? chargesTextBox =
+        chargesTextKey.currentContext?.findRenderObject() as RenderBox?;
+
+    if (chargesTextBox != null) {
+      chargesTextHeightNotifier.value = max(80, chargesTextBox.size.height);
+    }
+  }
 }

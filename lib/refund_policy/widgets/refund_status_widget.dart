@@ -1,9 +1,14 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:scapia_assignment/refund_policy/data/refund_data.dart';
+import 'package:scapia_assignment/refund_policy/refund_keys/refund_keys.dart';
 import 'package:scapia_assignment/refund_policy/widgets/refund_checkpoint_widget.dart';
 import 'package:scapia_assignment/refund_policy/widgets/title_widget.dart';
 import 'package:scapia_assignment/styles/app_colors/app_colors_helper.dart';
 import 'package:scapia_assignment/styles/text_styles/text_styles_helper.dart';
+
+part '../extensions/refund_status_widget_ext.dart';
 
 class RefundStatusWidget extends StatefulWidget {
   const RefundStatusWidget({super.key});
@@ -16,7 +21,7 @@ class _RefundStatusWidgetState extends State<RefundStatusWidget>
     with SingleTickerProviderStateMixin {
   late AnimationController progressController;
   late Animation<double> progressAnimation;
-  ValueNotifier<int> currentIndex = ValueNotifier(0);
+  ValueNotifier<int> currentIndex = ValueNotifier(-1);
 
   @override
   void initState() {
@@ -31,15 +36,8 @@ class _RefundStatusWidgetState extends State<RefundStatusWidget>
     progressAnimation =
         Tween<double>(begin: 0, end: 1).animate(progressController);
 
-    progressController.forward();
-
-    progressController.addListener(() {
-      if (progressController.isCompleted &&
-          currentIndex.value < RefundData.refundDataMaxLength) {
-        progressController.reset();
-        progressController.forward();
-        currentIndex.value++;
-      }
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      handleProgessController();
     });
   }
 

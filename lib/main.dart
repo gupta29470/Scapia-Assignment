@@ -4,6 +4,7 @@ import 'package:scapia_assignment/dependency_injection/repository_injection.dart
 import 'package:scapia_assignment/refund_policy/screens/refund_policy_screen.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
