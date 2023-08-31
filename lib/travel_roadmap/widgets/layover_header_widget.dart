@@ -15,10 +15,32 @@ class LayoverHeaderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 280,
-      child: Text(
-        "Layover in\n$airportName\n($airportCode)",
-        style: TextStylesHelper.vivaldiRed_12_700,
-        textAlign: TextAlign.center,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Flexible(
+            child: Text(
+              "Layover in",
+              style: TextStylesHelper.vivaldiRed_12_700,
+              textAlign: TextAlign.center,
+            ),
+          ),
+          Flexible(
+            child: Text(
+              airportName,
+              style: TextStylesHelper.vivaldiRed_12_700,
+              textAlign: TextAlign.center,
+            ),
+          ),
+          Flexible(
+            child: Text(
+              "($airportCode)",
+              style: TextStylesHelper.vivaldiRed_12_700,
+              textAlign: TextAlign.center,
+            ),
+          ),
+          const SizedBox(height: 16),
+        ],
       ),
     );
   }

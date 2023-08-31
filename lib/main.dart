@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return RepositoryInjection(
       child: BlocInjection(
         child: MaterialApp(
-          title: 'Flutter Demo',
+          title: 'Scapia Assignment',
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,

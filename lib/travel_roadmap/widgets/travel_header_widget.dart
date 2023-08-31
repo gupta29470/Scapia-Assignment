@@ -35,17 +35,22 @@ class TravelHeaderWidget extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
-                Text(
-                  flightName,
-                  style: TextStylesHelper.black_12_700,
+                Flexible(
+                  child: Text(
+                    flightName,
+                    style: TextStylesHelper.black_12_700,
+                  ),
                 ),
               ],
             ),
           ),
-          Text(
-            flightNumber,
-            style: TextStylesHelper.black_12_700,
+          Flexible(
+            child: Text(
+              flightNumber,
+              style: TextStylesHelper.black_12_700,
+            ),
           ),
+          const SizedBox(height: 16),
         ],
       ),
     );

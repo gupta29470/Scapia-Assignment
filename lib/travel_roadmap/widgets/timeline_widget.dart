@@ -13,34 +13,32 @@ class TimelineWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      flex: 1,
-      child: ListView.builder(
-        padding: const EdgeInsets.only(right: 32, left: 16),
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        scrollDirection: Axis.horizontal,
-        itemCount: travelData.length,
-        itemBuilder: (_, index) {
-          SingleTravelData? currentTravelData = travelData[index];
+    return Padding(
+      padding: const EdgeInsets.only(right: 32, left: 16),
+      child: Row(
+        children: List.generate(
+          travelData.length,
+          (index) {
+            SingleTravelData? currentTravelData = travelData[index];
 
-          if (currentTravelData != null) {
-            if (currentTravelData.isLayover == true) {
-              return LayoverWidget(
-                layoverTime: currentTravelData.layoverTime ?? "",
+            if (currentTravelData != null) {
+              if (currentTravelData.isLayover == true) {
+                return LayoverWidget(
+                  layoverTime: currentTravelData.layoverTime ?? "",
+                );
+              }
+              return Padding(
+                padding: index == 0
+                    ? const EdgeInsets.only(left: 36)
+                    : const EdgeInsets.all(0),
+                child: TravelTimelineWidget(
+                  totalTime: currentTravelData.totalTime ?? "",
+                ),
               );
             }
-            return Padding(
-              padding: index == 0
-                  ? const EdgeInsets.only(left: 36)
-                  : const EdgeInsets.all(0),
-              child: TravelTimelineWidget(
-                totalTime: currentTravelData.totalTime ?? "",
-              ),
-            );
-          }
-          return const SizedBox.shrink();
-        },
+            return const SizedBox.shrink();
+          },
+        ),
       ),
     );
   }

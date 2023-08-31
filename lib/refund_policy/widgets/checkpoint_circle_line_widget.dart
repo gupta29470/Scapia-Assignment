@@ -60,7 +60,6 @@ class CheckpointCircleLineWidget extends StatelessWidget {
             const Expanded(
               child: CheckpointLineWidget(
                 color: AppColorsHelper.artificialTurf,
-                height: double.infinity,
               ),
             ),
           ]
@@ -69,7 +68,6 @@ class CheckpointCircleLineWidget extends StatelessWidget {
             const Expanded(
               child: CheckpointLineWidget(
                 color: AppColorsHelper.clearSkies,
-                height: double.infinity,
               ),
             ),
           ]
@@ -80,7 +78,6 @@ class CheckpointCircleLineWidget extends StatelessWidget {
                 children: [
                   const CheckpointLineWidget(
                     color: AppColorsHelper.clearSkies,
-                    height: double.infinity,
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -90,7 +87,6 @@ class CheckpointCircleLineWidget extends StatelessWidget {
                         sizeFactor: progressAnimation,
                         child: const CheckpointLineWidget(
                           color: AppColorsHelper.artificialTurf,
-                          height: double.infinity,
                         ),
                       ),
                     ],

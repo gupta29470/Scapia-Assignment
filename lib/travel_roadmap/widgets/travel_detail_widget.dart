@@ -23,59 +23,143 @@ class TravelDetailWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(bottom: 8),
-                child: Text(
-                  travelData.departureTime ?? "",
-                  style: TextStylesHelper.black_12_700,
-                  textAlign: TextAlign.center,
+          Flexible(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Flexible(
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 8, left: 28),
+                        child: Text(
+                          travelData.departureTime ?? "",
+                          style: TextStylesHelper.black_12_700,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 8),
-                child: Text(
-                  travelData.departureDate ?? "",
-                  style: TextStylesHelper.black_12_400,
-                  textAlign: TextAlign.center,
+                Row(
+                  children: [
+                    Flexible(
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 8, left: 4),
+                        child: Text(
+                          travelData.departureDate ?? "",
+                          style: TextStylesHelper.black_12_400,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-              Text(
-                "${travelData.departureAirport} (${travelData.departureAirportCode})\n${travelData.departureTerminal}",
-                style: TextStylesHelper.black_12_700,
-                textAlign: TextAlign.center,
-              ),
-            ],
+                Row(
+                  children: [
+                    Flexible(
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                          left: 8,
+                          right: 4,
+                        ),
+                        child: Text(
+                          "${travelData.departureAirport} (${travelData.departureAirportCode})",
+                          style: TextStylesHelper.black_12_700,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Flexible(
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                          left: 8,
+                          right: 4,
+                        ),
+                        child: Text(
+                          "${travelData.departureTerminal}",
+                          style: TextStylesHelper.black_12_700,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(bottom: 8),
-                child: Text(
-                  travelData.arrivalTime ?? "",
-                  style: TextStylesHelper.black_12_700,
-                  textAlign: TextAlign.center,
+          Flexible(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Flexible(
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 8, right: 40),
+                        child: Text(
+                          travelData.arrivalTime ?? "",
+                          style: TextStylesHelper.black_12_700,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 8),
-                child: Text(
-                  travelData.arrivalDate ?? "",
-                  style: TextStylesHelper.black_12_400,
-                  textAlign: TextAlign.center,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Flexible(
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 8),
+                        child: Text(
+                          travelData.arrivalDate ?? "",
+                          style: TextStylesHelper.black_12_400,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-              Text(
-                "${travelData.arrivalAirport} (${travelData.arrivalAirportCode})\n${travelData.arrivalTerminal}",
-                style: TextStylesHelper.black_12_700,
-                textAlign: TextAlign.center,
-              ),
-            ],
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Flexible(
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 8),
+                        child: Text(
+                          "${travelData.arrivalAirport} (${travelData.arrivalAirportCode})",
+                          style: TextStylesHelper.black_12_700,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Flexible(
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 8),
+                        child: Text(
+                          "${travelData.arrivalTerminal}",
+                          style: TextStylesHelper.black_12_700,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ],
       ),

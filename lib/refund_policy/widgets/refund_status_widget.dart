@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scapia_assignment/refund_policy/data/refund_data.dart';
-import 'package:scapia_assignment/refund_policy/widgets/checkpoint_circle_line_widget.dart';
 import 'package:scapia_assignment/refund_policy/widgets/refund_checkpoint_sub_widget.dart';
+import 'package:scapia_assignment/refund_policy/widgets/refund_checkpoint_widget.dart';
 import 'package:scapia_assignment/refund_policy/widgets/title_widget.dart';
 import 'package:scapia_assignment/styles/app_colors/app_colors_helper.dart';
 import 'package:scapia_assignment/styles/text_styles/text_styles_helper.dart';
@@ -78,65 +78,40 @@ class _RefundStatusWidgetState extends State<RefundStatusWidget>
                     valueListenable: currentIndex,
                     builder: (_, currentIndexValue, __) {
                       if (index == RefundData.refundDataMaxLength - 1) {
-                        return IntrinsicHeight(
-                          child: Stack(
+                        return RefundCheckpointWidget(
+                          currentIndexValue: currentIndexValue,
+                          index: index,
+                          progressAnimation: progressAnimation,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              CheckpointCircleLineWidget(
+                              RefundCheckpointSubWidget(
                                 index: index,
-                                currentIndexValue: currentIndexValue,
                                 progressAnimation: progressAnimation,
+                                currentIndexValue: currentIndexValue,
                               ),
-                              ConstrainedBox(
-                                constraints: const BoxConstraints(
-                                  minHeight: 80,
-                                  maxHeight: double.infinity,
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 32,
                                 ),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    RefundCheckpointSubWidget(
-                                      index: index,
-                                      progressAnimation: progressAnimation,
-                                      currentIndexValue: currentIndexValue,
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        vertical: 32,
-                                      ),
-                                      child: Text(
-                                        "As per local time at the property",
-                                        style:
-                                            TextStylesHelper.cloudCover_12_700,
-                                      ),
-                                    ),
-                                  ],
+                                child: Text(
+                                  "As per local time at the property",
+                                  style: TextStylesHelper.cloudCover_12_700,
                                 ),
                               ),
                             ],
                           ),
                         );
                       }
-                      return IntrinsicHeight(
-                        child: Stack(
-                          children: [
-                            CheckpointCircleLineWidget(
-                              index: index,
-                              currentIndexValue: currentIndexValue,
-                              progressAnimation: progressAnimation,
-                            ),
-                            ConstrainedBox(
-                              constraints: const BoxConstraints(
-                                minHeight: 92,
-                                maxHeight: double.infinity,
-                              ),
-                              child: RefundCheckpointSubWidget(
-                                index: index,
-                                progressAnimation: progressAnimation,
-                                currentIndexValue: currentIndexValue,
-                              ),
-                            ),
-                          ],
+                      return RefundCheckpointWidget(
+                        currentIndexValue: currentIndexValue,
+                        index: index,
+                        progressAnimation: progressAnimation,
+                        child: RefundCheckpointSubWidget(
+                          index: index,
+                          progressAnimation: progressAnimation,
+                          currentIndexValue: currentIndexValue,
                         ),
                       );
                     },

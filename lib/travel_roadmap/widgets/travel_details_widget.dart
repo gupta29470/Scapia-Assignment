@@ -9,24 +9,22 @@ class TravelDetailsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      flex: 2,
-      child: ListView.builder(
-        padding: const EdgeInsets.only(right: 32, left: 16),
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        scrollDirection: Axis.horizontal,
-        itemCount: travelData.length,
-        itemBuilder: (_, index) {
-          SingleTravelData? currentTravelData = travelData[index];
-          if (currentTravelData != null) {
-            return TravelDetailWidget(
-              travelData: currentTravelData,
-              index: index,
-            );
-          }
-          return const SizedBox.shrink();
-        },
+    return Padding(
+      padding: const EdgeInsets.only(right: 32, left: 16),
+      child: Row(
+        children: List.generate(
+          travelData.length,
+          (index) {
+            SingleTravelData? currentTravelData = travelData[index];
+            if (currentTravelData != null) {
+              return TravelDetailWidget(
+                travelData: currentTravelData,
+                index: index,
+              );
+            }
+            return const SizedBox.shrink();
+          },
+        ),
       ),
     );
   }
