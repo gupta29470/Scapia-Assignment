@@ -11,7 +11,7 @@ class CheckpointLineWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 80,
+      height: double.infinity,
       width: 4,
       child: DecoratedBox(
         decoration: BoxDecoration(

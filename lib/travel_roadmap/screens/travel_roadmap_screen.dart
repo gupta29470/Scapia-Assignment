@@ -54,13 +54,14 @@ class _TravelRoadmapScreenState extends State<TravelRoadmapScreen> {
 
             return Center(
               child: Container(
-                height: 250,
                 padding: const EdgeInsets.symmetric(vertical: 24),
                 decoration: DecorationsHelper.travelRoadmapDecor,
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       HeaderWidget(travelData: travelData),
                       TimelineWidget(travelData: travelData),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scapia_assignment/refund_policy/data/refund_data.dart';
+import 'package:scapia_assignment/refund_policy/widgets/refund_checkpoint_sub_widget.dart';
 import 'package:scapia_assignment/refund_policy/widgets/refund_checkpoint_widget.dart';
 import 'package:scapia_assignment/refund_policy/widgets/title_widget.dart';
 import 'package:scapia_assignment/styles/app_colors/app_colors_helper.dart';
@@ -77,31 +78,41 @@ class _RefundStatusWidgetState extends State<RefundStatusWidget>
                     valueListenable: currentIndex,
                     builder: (_, currentIndexValue, __) {
                       if (index == RefundData.refundDataMaxLength - 1) {
-                        return Column(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            RefundCheckpointWidget(
-                              index: index,
-                              progressAnimation: progressAnimation,
-                              currentIndexValue: currentIndexValue,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 32,
+                        return RefundCheckpointWidget(
+                          currentIndexValue: currentIndexValue,
+                          index: index,
+                          progressAnimation: progressAnimation,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              RefundCheckpointSubWidget(
+                                index: index,
+                                progressAnimation: progressAnimation,
+                                currentIndexValue: currentIndexValue,
                               ),
-                              child: Text(
-                                "As per local time at the property",
-                                style: TextStylesHelper.cloudCover_12_700,
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 32,
+                                ),
+                                child: Text(
+                                  "As per local time at the property",
+                                  style: TextStylesHelper.cloudCover_12_700,
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         );
                       }
                       return RefundCheckpointWidget(
+                        currentIndexValue: currentIndexValue,
                         index: index,
                         progressAnimation: progressAnimation,
-                        currentIndexValue: currentIndexValue,
+                        child: RefundCheckpointSubWidget(
+                          index: index,
+                          progressAnimation: progressAnimation,
+                          currentIndexValue: currentIndexValue,
+                        ),
                       );
                     },
                   );
